@@ -5,8 +5,12 @@ export default function Home() {
 
 	React.useEffect(() => {
 		async function fectchBooks() {
-			const res = await api.getBook()
-			setBooks(res.docs)
+			try {
+				const res = await api.getBook()
+				setBooks(res.docs)
+			} catch (err) {
+				console.err(err)
+			}
 		}
 		fectchBooks()
 	}, [])
